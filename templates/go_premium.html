@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PixelPic Home</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+  </head>
+  <body>
+    <div class="menu-bar">
+      <img
+        class="home-logo"
+        src="../static/utils/images/pixelpic_logo.png"
+        alt="Pixel Pic"
+      />
+      <div class="button-group">
+        <a href="{{ url_for('home') }}"><button>Home</button></a>
+        <button class="active">Go Premium</button>
+        <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+      </div>
+    </div>
+    <section>
+      <div>
+        <p class="prem-title">GO PREMIUM</p>
+        <p class="prem-desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut
+          metus ut velit maximus gravida sed a elit. Donec nisi velit, vehicula
+          sit amet sodales in, placerat eget nisi. Ut consectetur scelerisque
+          est, eu finibus orci congue quis. Aliquam cursus vel eros eget dictum.
+          Sed tempor lorem tincidunt convallis molestie.
+        </p>
+      </div>
+    </section>
+    <div class="prem-column">
+      <section>
+        <div class="prem-free">
+          <p>Free</p>
+        </div>
+      </section>
+      <section>
+        <div class="prem-monthly">
+          <p>Monthly</p>
+          <button>Buy</button>
+        </div>
+      </section>
+      <section>
+        <div class="prem-yearly">
+          <p>Yearly</p>
+          <button>Buy</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

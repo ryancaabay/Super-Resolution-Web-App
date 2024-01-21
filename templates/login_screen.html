@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PixelPic</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+  </head>
+  <body>
+    <form method="POST" action="{{ url_for('login') }}">
+      <div class="login-column">
+        <section>
+          <div class="trapezoid1"></div>
+          <div class="login">
+            <p class="email" for="email">Email</p>
+            <input type="email" name="email" autocomplete="off" required />
+            <p class="password" for="password">Password</p>
+            <input
+              type="password"
+              name="password"
+              autocomplete="off"
+              required
+            />
+            <a class="new-user" href="{{ url_for('register') }}"
+              >Don't have an account yet?</a
+            >
+            <button type="submit" class="login-button">LOG IN</button>
+            <a class="forgot-password" href="{{ url_for('forgotpass') }}"
+              >Forgot Password?</a
+            >
+            {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% endif %}
+          </div>
+          <div class="trapezoid2"></div>
+        </section>
+        <section>
+          <div class="description">
+            <img
+              class="logo"
+              src="../static/utils/images/pixelpic_logo.png"
+              alt="Pixel Pic"
+            />
+            <img
+              class="sample"
+              src="../static/utils/images/sample.png"
+              alt="Sample Pic"
+            />
+            <p class="desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut
+              metus ut velit maximus gravida sed a elit. Donec nisi velit,
+              vehicula sit amet sodales in, placerat eget nisi. Ut consectetur
+              scelerisque est, eu finibus orci congue quis. Aliquam cursus vel
+              eros eget dictum. Sed tempor lorem tincidunt convallis molestie.
+            </p>
+          </div>
+        </section>
+      </div>
+    </form>
+  </body>
+</html>

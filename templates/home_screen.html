@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PixelPic Home</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+  </head>
+  <body>
+    <div class="menu-bar">
+      <img
+        class="home-logo"
+        src="../static/utils/images/pixelpic_logo.png"
+        alt="Pixel Pic"
+      />
+      <div class="button-group">
+        {% if user_logged_in %}
+        <button class="current">Home</button>
+        <a href="{{ url_for('go_premium') }}"><button>Go Premium</button></a>
+        <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+        {% else %}
+        <button class="current">Home</button>
+        <a href="{{ url_for('login') }}"><button>Login</button></a>
+        <a href="{{ url_for('register') }}"><button>Register</button></a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="home-column">
+      <section class="home-describe">
+        <p class="home-title">UPSCALE YOUR IMAGE</p>
+        <p class="home-desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+
+        <div id="uploaded-column" style="display: none">
+          <div class="uploaded-image">
+            <p class="upload-title">Uploaded Image</p>
+            <div id="uploaded-image-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="photo">
+          <input
+            class="img"
+            type="file"
+            id="file"
+            accept="image/*"
+            onchange="updateUploadStatus()"
+          />
+          <label class="imglbl" for="file">
+            <img class="imgicon" src="../static/utils/images/Imgicon.png" />
+          </label>
+
+          <div id="upload-buttons" style="display: none">
+            <div class="Upscale">
+              <button class="UpscaleButt" id="upscale-button">UPSCALE</button>
+              <span class="upload-status"></span>
+            </div>
+          </div>
+          <div id="upscaled-column" style="display: none">
+            <div class="upscaled-image">
+              <p class="upscale-title">Upscaled Image</p>
+              <div id="upscaled-image-container" style="max-width: 600px"></div>
+            </div>
+          </div>
+          <div id="image-container">
+            <!-- Empty div -->
+          </div>
+
+          <div id="download-button" style="display: none">
+            <div class="Upscale1">
+              <button class="DownloadButt" onclick="downloadImage()">
+                DOWNLOAD
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          $("#upscale-button").click(function () {
+            var imageData = localStorage.getItem("imageData");
+            console.log(imageData);
+            if (uploadedImage && imageData != null) {
+              $.ajax({
+                url: "/upscale",
+                method: "POST",
+                data: {
+                  imageData: imageData,
+                },
+                success: function (response) {
+                  var element = document.getElementById("upscaled-column");
+                  element.style.display = "block";
+                  $("#upscaled-image-container").html(
+                    "<img src='data:image/jpeg;base64," +
+                      response +
+                      "' alt='Upscaled Image'>"
+                  );
+                },
+                error: function (error) {
+                  console.log(error);
+                },
+              });
+            } else {
+              alert("Please upload an image first!");
+            }
+          });
+        });
+      </script>
+      <script src="/static/JS/main.js"></script>
+    </div>
+  </body>
+</html>
