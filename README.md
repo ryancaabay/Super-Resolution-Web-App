@@ -1,4 +1,4 @@
-# Super-Resolution-Web-App
+# Super Resolution Web App
 
 Authors: [Ryan Caabay](https://www.linkedin.com/in/ryancaabay/) · [Neil Malabay](https://www.linkedin.com/in/peter-neil-malabay-7aa046282/) · [Katrina Julie Ann Silao](https://www.linkedin.com/in/katrina-julie-ann-silao-5396682a2/) · [Eijneb Gibriel Reyes](https://www.linkedin.com/in/eijneb-gibriel-reyes-7b1991317/)
 
